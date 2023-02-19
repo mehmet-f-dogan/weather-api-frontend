@@ -9,13 +9,7 @@ To use the frontend, simply visit https://weather.mehmetfd.dev and use the carou
 ## Development
 
 To develop the frontend, you can clone the repository and open the index.html file in your browser. Note that you'll need to update the `getTemperature` function to use your own API endpoint.
-`function getTemperature(city) {
-  const url = https://weather.mehmetfd.dev/api?lat=${city.lat}&lon=${city.lon};
-  return axios.get(url)
-    .then(response => response.data.current_weather.temperature)
-    .catch(() => 'Error');
-}`
-Once you've made the changes, you can open the index.html file in your browser to test the frontend. Note that you may need to run a local web server to load the page correctly due to CORS restrictions.
+<br>Once you've made the changes, you can open the `index.html` file in your browser to test the frontend. Note that you may need to run a local web server to load the page correctly due to CORS restrictions.
 
 ## Author
 
