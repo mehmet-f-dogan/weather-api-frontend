@@ -1,0 +1,46 @@
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: Arial, sans-serif;
+}
+
+#header {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+}
+
+#header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+#content {
+  padding: 20px;
+  text-align: center;
+}
+
+#temp-carousel {
+  margin-top: 20px;
+}
+
+.carousel-inner {
+  width: 100%;
+  max-height: 400px;
+}
+
+.carousel-item {
+  text-align: center;
+  padding: 20px;
+  background-color: #222;
+}
+
+.carousel-item h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.carousel-item p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
