@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temperature API Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Temperature API Demo</h1>
+      <p>
+        Use the carousel below to view the current temperature for different
+        cities:
+      </p>
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h3 class="text-center">Sheridan, Wyoming</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Sydney, Australia</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Berlin, Germany</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Munich, Germany</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Ankara, Turkey</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Bursa, Turkey</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+          <div class="carousel-item">
+            <h3 class="text-center">Canakkale, Turkey</h3>
+            <p class="text-center">Loading...</p>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carousel"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carousel"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      const cities = [
+        { name: "Sheridan", lat: "44.7944", lon: "-106.8232" },
+        { name: "Sydney", lat: "-33.8679", lon: "151.2073" },
+        { name: "Berlin", lat: "52.5200", lon: "13.4050" },
+        { name: "Munich", lat: "48.1351", lon: "11.5820" },
+        { name: "Ankara", lat: "39.9208", lon: "32.8541" },
+        { name: "Bursa", lat: "40.1885", lon: "29.0615" },
+        { name: "Canakkale", lat: "40.1553", lon: "26.4142" },
+      ];
+      function getTemperature(city) {
+        const url = `https://weather.mehmetfd.dev/api?lat=${city.lat}&lon=${city.lon}`;
+        return axios
+          .get(url)
+          .then((response) => response.data.current_weather.temperature)
+          .catch(() => "Error");
+      }
+
+      async function updateTemperature(cityIndex) {
+        const city = cities[cityIndex];
+        const temperature = await getTemperature(city);
+        const item = $(`#carousel .carousel-item:nth-child(${cityIndex + 1})`);
+        item.find("p").text(temperature + " °C");
+      }
+
+      $(document).ready(() => {
+        cities.forEach((city, index) => updateTemperature(index));
+        $("#carousel").on("slide.bs.carousel", (event) => {
+          const cityIndex = event.to;
+          updateTemperature(cityIndex);
+        });
+      });
+    </script>
+  </body>
+</html>
