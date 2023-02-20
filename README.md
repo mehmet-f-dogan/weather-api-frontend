@@ -1,6 +1,6 @@
 # Weather API Frontend
 
-This is a simple frontend for the Weather API hosted at https://weather.mehmetfd.dev/api. It allows you to view the current temperature for different cities using a carousel.
+This is a simple frontend for the [Weather API](https://github.com/mehmet-f-dogan/weather-api) hosted at https://weather.mehmetfd.dev/api. It allows you to view the current temperature for different cities using a carousel.
 
 ## Usage
 
